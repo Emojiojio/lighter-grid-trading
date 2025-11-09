@@ -157,6 +157,12 @@ class GridTradingGUI:
         ttk.Entry(frame, textvariable=self.order_value_var, width=30).grid(
             row=5, column=1, padx=10, pady=10, sticky=tk.W
         )
+        ttk.Label(
+            frame, 
+            text="名义价值（未乘以杠杆）\n实际保证金 = 开仓价值 / 杠杆", 
+            foreground="gray",
+            font=("Arial", 8)
+        ).grid(row=5, column=2, sticky=tk.W, padx=5)
         
         # 策略预览按钮
         ttk.Button(frame, text="预览策略", command=self.preview_strategy).grid(
@@ -344,14 +350,19 @@ class GridTradingGUI:
 网格区间: {summary['grid_range']}
 网格数量: {summary['grid_count']}
 杠杆倍数: {summary['leverage']}x
-每网格开仓价值: {summary['order_value']} USDT
+每网格开仓价值: {summary['order_value']} USDT (名义价值)
 
 订单统计:
   买入订单数: {summary['buy_orders_count']}
   卖出订单数: {summary['sell_orders_count']}
-  总买入价值: {summary['total_buy_value']:.2f} USDT
-  总卖出价值: {summary['total_sell_value']:.2f} USDT
-  所需保证金: {summary['total_capital_needed']:.2f} USDT
+  总买入价值: {summary['total_buy_value']:.2f} USDT (名义价值)
+  总卖出价值: {summary['total_sell_value']:.2f} USDT (名义价值)
+  所需保证金: {summary['total_capital_needed']:.2f} USDT (实际需要)
+
+说明:
+  - 开仓价值是名义价值，未乘以杠杆
+  - 实际保证金 = 总买入价值 / 杠杆倍数
+  - 例如: 100 USDT 开仓价值，3x 杠杆 = 33.33 USDT 保证金
 {'='*50}
 """
             

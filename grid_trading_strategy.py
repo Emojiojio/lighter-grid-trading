@@ -33,7 +33,7 @@ class GridTradingStrategy:
             upper_price: 网格上限价格
             grid_count: 网格数量
             leverage: 杠杆倍数
-            order_value: 每个网格的开仓价值（USDT）
+            order_value: 每个网格的开仓价值（USDT，名义价值，未乘以杠杆）
         """
         self.symbol = symbol
         self.lower_price = Decimal(str(lower_price))
@@ -137,11 +137,12 @@ class GridTradingStrategy:
         print(f"网格区间: {summary['grid_range']}")
         print(f"网格数量: {summary['grid_count']}")
         print(f"杠杆倍数: {summary['leverage']}x")
-        print(f"每网格开仓价值: {summary['order_value']} USDT")
+        print(f"每网格开仓价值: {summary['order_value']} USDT (名义价值)")
         print(f"买入订单数: {summary['buy_orders_count']}")
         print(f"卖出订单数: {summary['sell_orders_count']}")
-        print(f"总买入价值: {summary['total_buy_value']} USDT")
-        print(f"总卖出价值: {summary['total_sell_value']} USDT")
-        print(f"所需保证金: {summary['total_capital_needed']} USDT")
+        print(f"总买入价值: {summary['total_buy_value']} USDT (名义价值)")
+        print(f"总卖出价值: {summary['total_sell_value']} USDT (名义价值)")
+        print(f"所需保证金: {summary['total_capital_needed']} USDT (实际需要)")
+        print(f"\n说明: 开仓价值是名义价值，实际保证金 = 总买入价值 / 杠杆倍数")
         print("="*60 + "\n")
 

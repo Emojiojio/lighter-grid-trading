@@ -114,7 +114,9 @@ class InteractiveSetup:
     def get_order_value(self) -> float:
         """获取开仓价值"""
         print("\n请设置每个网格的开仓价值:")
-        print("提示: 这是每个网格订单的价值（USDT）")
+        print("提示: 这是每个网格订单的名义价值（USDT），未乘以杠杆")
+        print("     实际需要的保证金 = 开仓价值 / 杠杆倍数")
+        print("     例如: 100 USDT 开仓价值，3x 杠杆 = 33.33 USDT 保证金")
         
         while True:
             try:
