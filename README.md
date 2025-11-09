@@ -4,7 +4,8 @@
 
 ## 功能特点
 
-- 🎯 **交互式配置**: 通过命令行轻松配置交易参数
+- 🖥️ **图形界面**: 提供友好的图形化操作界面，支持可视化配置和运行
+- 🎯 **交互式配置**: 通过图形界面或命令行轻松配置交易参数
 - 📊 **网格交易**: 在指定价格区间内自动设置买入和卖出订单
 - ⚙️ **灵活参数**: 支持自定义标的、网格区间、网格数量、杠杆和开仓价值
 - 🔄 **自动监控**: 自动监控订单状态并重新下单
@@ -26,26 +27,63 @@ cd lighter-grid-trading
 pip3 install -r requirements.txt
 ```
 
-### 3. 一键启动
+### 3. 启动程序
+
+**方式 1：图形界面（推荐）**
 
 ```bash
-chmod +x run.sh
+# 使用一键脚本
 ./run.sh
+# 选择选项 1：启动图形界面
+
+# 或直接启动图形界面
+./start_gui.sh
+# 或
+python3 gui.py
 ```
 
-或者直接使用 Python:
+**方式 2：命令行界面**
 
 ```bash
-# 配置策略参数
-python3 interactive_setup.py
+# 使用一键脚本
+./run.sh
+# 选择选项 2 或 3
 
-# 启动策略
-python3 main.py
+# 或直接运行
+python3 interactive_setup.py  # 配置
+python3 main.py               # 运行策略
 ```
 
 ## 使用说明
 
-### 配置参数
+### 图形界面使用（推荐）
+
+1. **启动图形界面**
+   ```bash
+   ./start_gui.sh
+   # 或
+   python3 gui.py
+   ```
+
+2. **配置 API 凭证**
+   - 切换到 "API 配置" 标签页
+   - 输入您的 Lighter API Key 和 Secret
+   - 点击 "保存 API 配置"
+
+3. **配置交易参数**
+   - 切换到 "交易配置" 标签页
+   - 填写交易对、网格区间、网格数量、杠杆倍数、开仓价值
+   - 点击 "预览策略" 查看策略摘要
+   - 点击 "保存交易配置"
+
+4. **运行策略**
+   - 切换到 "策略运行" 标签页
+   - 点击 "启动策略" 按钮
+   - 查看运行状态和策略信息
+   - 切换到 "运行日志" 标签页查看详细日志
+   - 点击 "停止策略" 停止运行
+
+### 命令行使用
 
 运行配置脚本后，您需要设置以下参数：
 
@@ -99,12 +137,14 @@ python3 main.py
 
 ```
 .
-├── main.py                  # 主程序入口
-├── interactive_setup.py     # 交互式配置脚本
+├── gui.py                   # 图形界面程序
+├── main.py                  # 主程序入口（命令行）
+├── interactive_setup.py     # 交互式配置脚本（命令行）
 ├── grid_trading_strategy.py # 网格交易策略核心逻辑
 ├── lighter_api.py           # Lighter API 封装
 ├── config.py                # 配置管理模块
 ├── run.sh                   # 一键启动脚本
+├── start_gui.sh            # 快速启动图形界面
 ├── requirements.txt         # Python 依赖
 ├── README.md               # 项目文档
 └── .gitignore              # Git 忽略文件

@@ -29,25 +29,31 @@ pip3 install -q -r requirements.txt
 # 显示菜单
 echo ""
 echo "请选择操作:"
-echo "1. 配置策略参数（首次使用或修改配置）"
-echo "2. 启动网格交易策略"
-echo "3. 退出"
+echo "1. 启动图形界面（推荐）"
+echo "2. 配置策略参数（命令行）"
+echo "3. 启动网格交易策略（命令行）"
+echo "4. 退出"
 echo ""
 
-read -p "请输入选项 (1-3): " choice
+read -p "请输入选项 (1-4): " choice
 
 case $choice in
     1)
         echo ""
+        echo "启动图形界面..."
+        python3 gui.py
+        ;;
+    2)
+        echo ""
         echo "启动配置向导..."
         python3 interactive_setup.py
         ;;
-    2)
+    3)
         echo ""
         echo "启动网格交易策略..."
         python3 main.py
         ;;
-    3)
+    4)
         echo "退出"
         exit 0
         ;;
