@@ -1,0 +1,19 @@
+{
+    "api_key": "your_api_key_here",
+    "api_secret": "your_api_secret_here",
+    "base_url": "https://api.lighter.xyz",
+    "network": {
+        "timeout": 30,
+        "max_retries": 3,
+        "retry_backoff": 0.5
+    },
+    "trading": {
+        "symbol": "BTC/USDT",
+        "lower_price": 40000,
+        "upper_price": 50000,
+        "grid_count": 20,
+        "leverage": 3,
+        "order_value": 100
+    }
+}
+
