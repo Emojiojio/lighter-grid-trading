@@ -16,3 +16,4 @@ pip3 install -q -r requirements.txt
 # 启动图形界面
 python3 gui.py
 
+
